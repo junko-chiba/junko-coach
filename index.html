@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>「本当かな？」と思ってた元理科教師が、論理で納得して人生が変わった話｜ちば順子</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif;
+      background-color: #FAF8F5;
+      color: #3D3D3D;
+      line-height: 1.9;
+    }
+
+    /* ヒーロー */
+    .hero {
+      background-image: linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+        url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1200&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      padding: 80px 24px 70px;
+    }
+    .hero h1 {
+      font-size: 1.7rem;
+      line-height: 1.6;
+      color: #3D3D3D;
+      margin-bottom: 28px;
+      letter-spacing: 0.05em;
+    }
+    .hero .sub {
+      font-size: 1.05rem;
+      color: #6B6B6B;
+      margin-bottom: 20px;
+    }
+    .hero .desc {
+      font-size: 0.95rem;
+      color: #7A7A7A;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* セクション共通 */
+    section {
+      padding: 60px 24px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 1.3rem;
+      color: #6B8F6B;
+      margin-bottom: 28px;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+    section h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: #C4956A;
+      margin: 12px auto 0;
+    }
+
+    /* 共感 */
+    .empathy {
+      background-color: #FAF8F5;
+    }
+    .empathy ul {
+      list-style: none;
+      padding: 0;
+    }
+    .empathy ul li {
+      padding: 12px 0;
+      border-bottom: 1px solid #E8E2DA;
+      font-size: 0.97rem;
+    }
+    .empathy ul li::before {
+      content: '□ ';
+      color: #C4956A;
+    }
+
+    /* 解決策 */
+    .solution {
+      background-color: #F0EDE8;
+    }
+    .solution-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .solution-wrap h2 {
+      font-size: 1.3rem;
+      color: #6B8F6B;
+      margin-bottom: 28px;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+    .solution-wrap h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: #C4956A;
+      margin: 12px auto 0;
+    }
+    .before-after {
+      margin-bottom: 16px;
+      font-size: 0.97rem;
+    }
+    .before-after .arrow {
+      color: #C4956A;
+      margin: 0 8px;
+    }
+    .solution-message {
+      margin-top: 32px;
+      font-size: 0.97rem;
+      color: #6B6B6B;
+      text-align: center;
+      line-height: 2;
+    }
+
+    /* 自己紹介 */
+    .profile {
+      background-color: #FAF8F5;
+    }
+    .profile-content {
+      font-size: 0.97rem;
+      line-height: 2.1;
+    }
+    .profile-content p {
+      margin-bottom: 20px;
+    }
+
+    /* 受講生 */
+    .testimonial {
+      background-color: #F0EDE8;
+    }
+    .testimonial-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .testimonial-wrap h2 {
+      font-size: 1.3rem;
+      color: #6B8F6B;
+      margin-bottom: 28px;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+    .testimonial-wrap h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: #C4956A;
+      margin: 12px auto 0;
+    }
+    .quote {
+      background: #fff;
+      border-left: 4px solid #C4956A;
+      padding: 20px 24px;
+      border-radius: 4px;
+      font-size: 0.97rem;
+      font-style: italic;
+      margin-bottom: 12px;
+      line-height: 2;
+    }
+    .quote-author {
+      text-align: right;
+      font-size: 0.88rem;
+      color: #9A9A9A;
+      margin-bottom: 28px;
+    }
+    .changes ul {
+      list-style: none;
+      padding: 0;
+    }
+    .changes ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #E8E2DA;
+      font-size: 0.95rem;
+    }
+    .changes ul li::before {
+      content: '✦ ';
+      color: #6B8F6B;
+    }
+
+    /* サービス */
+    .service {
+      background-color: #FAF8F5;
+    }
+    .service ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 28px;
+    }
+    .service ul li {
+      padding: 12px 0;
+      border-bottom: 1px solid #E8E2DA;
+      font-size: 0.97rem;
+    }
+    .service ul li::before {
+      content: '◇ ';
+      color: #6B8F6B;
+    }
+
+    /* LINE */
+    .line-cta {
+      background-color: #6B8F6B;
+      color: #fff;
+      text-align: center;
+      padding: 70px 24px;
+    }
+    .line-cta h2 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .line-cta p {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      opacity: 0.9;
+      line-height: 1.9;
+    }
+    .line-cta .note {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-bottom: 36px;
+    }
+    .line-btn {
+      display: inline-block;
+      background-color: #fff;
+      color: #6B8F6B;
+      padding: 16px 48px;
+      border-radius: 50px;
+      font-size: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s;
+    }
+    .line-btn:hover {
+      opacity: 0.85;
+    }
+
+    /* フッター */
+    footer {
+      background-color: #3D3D3D;
+      color: #BCBCBC;
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.4rem; }
+      section { padding: 50px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ① ヒーロー -->
+  <div class="hero">
+    <h1>「本当かな？と思ってた」元理科教師が、<br>論理で納得して、人生が変わった話</h1>
+    <p class="sub">「信じ切れないけど、なんか気になる」<br>そういう人に、届けたい。</p>
+  </div>
+
+  <!-- ② 共感 -->
+  <section class="empathy">
+    <h2>こんな気持ち、ありませんか？</h2>
+    <ul>
+      <li>引き寄せ？波動？なんか怪しい…でも気になる</li>
+      <li>スピリチュアルって、根拠はあるの？</li>
+      <li>変わりたいけど、感覚だけで動けない</li>
+      <li>「ちゃんとしなければ」が抜けなくて疲れた</li>
+      <li>退職後・子育て後、ふと「私って何者？」と思った</li>
+      <li>自分に自信が持てない</li>
+      <li>「仕方ない」と気づいたら諦めていた</li>
+      <li>自分らしく生きたいけど、どうすればいいかわからない</li>
+    </ul>
+  </section>
+
+  <!-- ③ 解決策 -->
+  <div class="solution">
+    <div class="solution-wrap">
+      <h2>中庸道™️と出会って、こんなふうに変わりました</h2>
+      <div class="before-after">「仕方ない」<span class="arrow">→</span>「今の私でいい」に変わった</div>
+      <div class="before-after">「人の目が気になる」<span class="arrow">→</span>「自分軸で動ける」に変わった</div>
+      <div class="before-after">「ちゃんとしなければ」<span class="arrow">→</span>「これでいい」に変わった</div>
+      <div class="before-after">「何者でもない私」<span class="arrow">→</span>「今の私でいいんだ！」に変わった</div>
+      <p class="solution-message">
+        無理に信じなくていい。<br>
+        頭で納得してから、自然と変わっていける。<br>
+        それが中庸道™️です。
+      </p>
+    </div>
+  </div>
+
+  <!-- ④ 自己紹介 -->
+  <section class="profile">
+    <h2>はじめまして</h2>
+    <div style="text-align:center; margin-bottom:28px;">
+      <img src="junko_illust.png" alt="じゅんこさんのイラスト" style="width:180px; border-radius:50%; border:4px solid #C4956A;">
+    </div>
+    <div class="profile-content">
+      <p>ちば順子です。<br>元中学校の理科教諭。33年間、白衣を着て<br>「なぜだろう→予想→実験→考察」を<br>子どもたちと繰り返してきました。</p>
+      <p>だから私は、何でもすぐには信じられない。<br>「根拠は？」「単位はヘルツ？（笑）」<br>引き寄せも、波動も、インナーチャイルドも<br>ずっと「本当かな」と思っていました。</p>
+      <p>でも今は、どれも「嘘だ」と言えない。<br>むしろ「そうかもね」と思っています。</p>
+      <p>私が変わったのは、無理に信じたからじゃない。<br>頭で納得できたから、自然と変わっていった。<br><br>その入口になったのが、中庸思考（中庸道™️）でした。</p>
+    </div>
+  </section>
+
+  <!-- ⑤ 受講生の変化 -->
+  <div class="testimonial">
+    <div class="testimonial-wrap">
+      <div style="text-align:center; margin-bottom:16px;">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 5 C15 5 5 20 5 35 C5 50 15 55 30 55 C45 55 55 50 55 35 C55 20 45 5 30 5Z" fill="#6B8F6B" opacity="0.2"/>
+          <path d="M30 10 Q20 25 30 50 Q40 25 30 10Z" fill="#6B8F6B" opacity="0.6"/>
+          <path d="M30 10 Q15 30 30 50" stroke="#6B8F6B" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <h2>受講生さんの声</h2>
+      <div class="quote">
+        「自分を縛っていたものが、少しずつ消えていきました。<br>こんなに楽に生きていいんだ、という感覚がやってきました。」
+      </div>
+      <p class="quote-author">― 50代女性</p>
+      <div class="changes">
+        <ul>
+          <li>「仕方ない」と言わなくなった</li>
+          <li>家族との関係が楽になった</li>
+          <li>自分のやりたいことが見えてきた</li>
+          <li>毎日が少しずつ楽しくなってきた</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ サービス案内 -->
+  <section class="service">
+    <h2>こんなサポートをしています</h2>
+    <ul>
+      <li>自分の価値観と向き合う個別セッション</li>
+      <li>中庸道™️を通じた人生再設計</li>
+      <li>少人数での継続サポート</li>
+    </ul>
+    <p style="text-align:center; font-size:0.95rem; color:#6B6B6B;">まずはLINEで気軽にお話しませんか？</p>
+  </section>
+
+  <!-- ⑦ LINE登録 -->
+  <div class="line-cta">
+    <h2>一人で抱えなくていいです</h2>
+    <p>「信じ切れないけど、話を聞いてみたい」<br>「変わりたいけど、どこから始めればいいかわからない」<br><br>そんな方は、LINEで気軽に話しかけてください。</p>
+    <p class="note">登録後すぐに売り込みはしません。まずあなたの話を聞かせてください。<br>いつでも退会できます。</p>
+    <a class="line-btn" href="https://page.line.me/540ywpid" target="_blank">友だち追加はこちら</a>
+  </div>
+
+  <footer>
+    <p>© 2026 junko coach｜中庸道™️ 人生再設計セッション</p>
+  </footer>
+
+</body>
+</html>
