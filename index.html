@@ -16,115 +16,204 @@
 
     /* ヒーロー */
     .hero {
-      background-image: linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
-        url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1200&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3d 40%, #1a2a3a 100%);
+      position: relative;
+      overflow: hidden;
       text-align: center;
-      padding: 80px 24px 70px;
+      padding: 90px 24px 80px;
+      color: #fff;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 60% 40%, rgba(196,149,106,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 70%, rgba(107,143,107,0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-label {
+      display: inline-block;
+      border: 1px solid rgba(196,149,106,0.6);
+      color: #C4956A;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 28px;
     }
     .hero h1 {
-      font-size: 1.7rem;
-      line-height: 1.6;
-      color: #3D3D3D;
-      margin-bottom: 28px;
-      letter-spacing: 0.05em;
+      font-size: 1.85rem;
+      line-height: 1.7;
+      color: #fff;
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: #C4956A;
     }
     .hero .sub {
-      font-size: 1.05rem;
-      color: #6B6B6B;
-      margin-bottom: 20px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 40px;
+      line-height: 2;
     }
-    .hero .desc {
-      font-size: 0.95rem;
-      color: #7A7A7A;
-      max-width: 480px;
-      margin: 0 auto;
+    .hero-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #C4956A, #d4a57a);
+      color: #fff;
+      padding: 16px 48px;
+      border-radius: 50px;
+      font-size: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      box-shadow: 0 4px 20px rgba(196,149,106,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-
-    /* セクション共通 */
-    section {
-      padding: 60px 24px;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    section h2 {
-      font-size: 1.3rem;
-      color: #6B8F6B;
-      margin-bottom: 28px;
-      text-align: center;
-      letter-spacing: 0.06em;
-    }
-    section h2::after {
-      content: '';
-      display: block;
-      width: 120px;
-      height: 2px;
-      background: #C4956A;
-      margin: 12px auto 0;
+    .hero-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196,149,106,0.5);
     }
 
     /* 共感 */
-    .empathy {
-      background-color: #FAF8F5;
+    .empathy-section {
+      background: #FAF8F5;
+      padding: 70px 24px;
     }
-    .empathy ul {
-      list-style: none;
-      padding: 0;
-    }
-    .empathy ul li {
-      padding: 12px 0;
-      border-bottom: 1px solid #E8E2DA;
-      font-size: 0.97rem;
-    }
-    .empathy ul li::before {
-      content: '□ ';
-      color: #C4956A;
-    }
-
-    /* 解決策 */
-    .solution {
-      background-color: #F0EDE8;
-    }
-    .solution-wrap {
+    .section-inner {
       max-width: 640px;
       margin: 0 auto;
-      padding: 60px 24px;
     }
-    .solution-wrap h2 {
-      font-size: 1.3rem;
-      color: #6B8F6B;
-      margin-bottom: 28px;
+    .section-label {
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: #C4956A;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      color: #2d4a2d;
+      margin-bottom: 8px;
       text-align: center;
       letter-spacing: 0.06em;
     }
-    .solution-wrap h2::after {
+    .section-title::after {
       content: '';
       display: block;
       width: 120px;
       height: 2px;
-      background: #C4956A;
-      margin: 12px auto 0;
+      background: linear-gradient(90deg, #C4956A, rgba(196,149,106,0.2));
+      margin: 14px auto 32px;
     }
-    .before-after {
-      margin-bottom: 16px;
+    .empathy-list {
+      list-style: none;
+      padding: 0;
+    }
+    .empathy-list li {
+      padding: 14px 16px;
+      border-bottom: 1px solid #E8E2DA;
       font-size: 0.97rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .before-after .arrow {
-      color: #C4956A;
-      margin: 0 8px;
-    }
-    .solution-message {
-      margin-top: 32px;
-      font-size: 0.97rem;
-      color: #6B6B6B;
-      text-align: center;
-      line-height: 2;
+    .empathy-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border: 2px solid #C4956A;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
-    /* 自己紹介 */
-    .profile {
-      background-color: #FAF8F5;
+    /* 変化 */
+    .solution-section {
+      background: linear-gradient(135deg, #2d5a3d 0%, #1a3a2a 100%);
+      padding: 70px 24px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .solution-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(196,149,106,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .solution-section .section-title {
+      color: #fff;
+    }
+    .solution-section .section-title::after {
+      background: linear-gradient(90deg, #C4956A, rgba(196,149,106,0.2));
+    }
+    .solution-section .section-label {
+      color: rgba(196,149,106,0.9);
+    }
+    .change-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .change-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.97rem;
+    }
+    .change-card .before {
+      color: rgba(255,255,255,0.6);
+      flex: 1;
+    }
+    .change-card .arrow {
+      color: #C4956A;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .change-card .after {
+      color: #fff;
+      font-weight: bold;
+      flex: 1;
+      text-align: right;
+    }
+    .solution-message {
+      text-align: center;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 2.2;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 32px;
+    }
+
+    /* プロフィール */
+    .profile-section {
+      background: #FAF8F5;
+      padding: 70px 24px;
+    }
+    .profile-box {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .profile-img-wrap {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .profile-img-wrap img {
+      width: 200px;
+      border-radius: 50%;
+      border: 5px solid #C4956A;
+      box-shadow: 0 8px 32px rgba(196,149,106,0.25);
     }
     .profile-content {
       font-size: 0.97rem;
@@ -134,130 +223,138 @@
       margin-bottom: 20px;
     }
 
-    /* 受講生 */
-    .testimonial {
-      background-color: #F0EDE8;
+    /* 受講生の声 */
+    .testimonial-section {
+      background: #F0EDE8;
+      padding: 70px 24px;
     }
-    .testimonial-wrap {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
-    .testimonial-wrap h2 {
-      font-size: 1.3rem;
-      color: #6B8F6B;
-      margin-bottom: 28px;
-      text-align: center;
-      letter-spacing: 0.06em;
-    }
-    .testimonial-wrap h2::after {
-      content: '';
-      display: block;
-      width: 120px;
-      height: 2px;
-      background: #C4956A;
-      margin: 12px auto 0;
-    }
-    .quote {
+    .quote-box {
       background: #fff;
-      border-left: 4px solid #C4956A;
-      padding: 20px 24px;
-      border-radius: 4px;
+      border-left: 5px solid #C4956A;
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 12px;
       font-size: 0.97rem;
       font-style: italic;
-      margin-bottom: 12px;
-      line-height: 2;
+      line-height: 2.1;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
     .quote-author {
       text-align: right;
       font-size: 0.88rem;
       color: #9A9A9A;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
-    .changes ul {
+    .changes-list {
       list-style: none;
       padding: 0;
     }
-    .changes ul li {
-      padding: 10px 0;
+    .changes-list li {
+      padding: 12px 0;
       border-bottom: 1px solid #E8E2DA;
       font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .changes ul li::before {
-      content: '✦ ';
-      color: #6B8F6B;
+    .changes-list li::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: #6B8F6B;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* サービス */
-    .service {
-      background-color: #FAF8F5;
-    }
-    .service ul {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 28px;
-    }
-    .service ul li {
-      padding: 12px 0;
-      border-bottom: 1px solid #E8E2DA;
-      font-size: 0.97rem;
-    }
-    .service ul li::before {
-      content: '◇ ';
-      color: #6B8F6B;
-    }
-
-    /* LINE */
-    .line-cta {
-      background-color: #6B8F6B;
-      color: #fff;
-      text-align: center;
+    .service-section {
+      background: #FAF8F5;
       padding: 70px 24px;
     }
-    .line-cta h2 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 36px;
+    }
+    .service-list li {
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      background: #fff;
+      border-radius: 10px;
+      border-left: 4px solid #6B8F6B;
+      font-size: 0.97rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* LINE CTA */
+    .line-cta {
+      background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3d 100%);
       color: #fff;
+      text-align: center;
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .line-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(196,149,106,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .line-cta h2 {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      color: #fff;
+      position: relative;
     }
     .line-cta p {
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-      opacity: 0.9;
-      line-height: 1.9;
+      font-size: 0.97rem;
+      margin-bottom: 12px;
+      color: rgba(255,255,255,0.85);
+      line-height: 2;
+      position: relative;
     }
     .line-cta .note {
-      font-size: 0.85rem;
-      opacity: 0.7;
-      margin-bottom: 36px;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 40px;
+      position: relative;
     }
     .line-btn {
       display: inline-block;
-      background-color: #fff;
-      color: #6B8F6B;
-      padding: 16px 48px;
+      background: linear-gradient(135deg, #C4956A, #d4a57a);
+      color: #fff;
+      padding: 18px 56px;
       border-radius: 50px;
-      font-size: 1rem;
+      font-size: 1.05rem;
       text-decoration: none;
       font-weight: bold;
-      letter-spacing: 0.05em;
-      transition: opacity 0.2s;
+      letter-spacing: 0.08em;
+      box-shadow: 0 4px 24px rgba(196,149,106,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
     }
     .line-btn:hover {
-      opacity: 0.85;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(196,149,106,0.55);
     }
 
-    /* フッター */
     footer {
-      background-color: #3D3D3D;
-      color: #BCBCBC;
+      background-color: #1a1a1a;
+      color: #888;
       text-align: center;
       padding: 28px 24px;
       font-size: 0.82rem;
     }
 
     @media (max-width: 480px) {
-      .hero h1 { font-size: 1.4rem; }
-      section { padding: 50px 20px; }
+      .hero h1 { font-size: 1.45rem; }
+      .change-card { flex-direction: column; text-align: center; }
+      .change-card .after { text-align: center; }
     }
   </style>
 </head>
@@ -265,33 +362,57 @@
 
   <!-- ① ヒーロー -->
   <div class="hero">
-    <h1>「本当かな？と思ってた」元理科教師が、<br>論理で納得して、人生が変わった話</h1>
-    <p class="sub">「信じ切れないけど、なんか気になる」<br>そういう人に、届けたい。</p>
+    <div class="hero-label">元理科教師 × 中庸道™️</div>
+    <h1>「本当かな？」と思ってた私が、<br><em>論理で納得して</em>、人生が変わった話</h1>
+    <p class="sub">信じなくていい。まず、頭で納得してみて。<br>「そうかもね」が積み重なると、自然と変わっていく。</p>
+    <a class="hero-btn" href="https://page.line.me/540ywpid" target="_blank">まずはLINEで話を聞いてみる</a>
   </div>
 
   <!-- ② 共感 -->
-  <section class="empathy">
-    <h2>こんな気持ち、ありませんか？</h2>
-    <ul>
-      <li>引き寄せ？波動？なんか怪しい…でも気になる</li>
-      <li>スピリチュアルって、根拠はあるの？</li>
-      <li>変わりたいけど、感覚だけで動けない</li>
-      <li>「ちゃんとしなければ」が抜けなくて疲れた</li>
-      <li>退職後・子育て後、ふと「私って何者？」と思った</li>
-      <li>自分に自信が持てない</li>
-      <li>「仕方ない」と気づいたら諦めていた</li>
-      <li>自分らしく生きたいけど、どうすればいいかわからない</li>
-    </ul>
-  </section>
+  <div class="empathy-section">
+    <div class="section-inner">
+      <p class="section-label">EMPATHY</p>
+      <h2 class="section-title">こんな気持ち、ありませんか？</h2>
+      <ul class="empathy-list">
+        <li>引き寄せ？波動？なんか怪しい…でも気になる</li>
+        <li>スピリチュアルって、根拠はあるの？</li>
+        <li>変わりたいけど、感覚だけで動けない</li>
+        <li>「ちゃんとしなければ」が抜けなくて疲れた</li>
+        <li>退職後・子育て後、ふと「私って何者？」と思った</li>
+        <li>自分に自信が持てない</li>
+        <li>「仕方ない」と気づいたら諦めていた</li>
+        <li>自分らしく生きたいけど、どうすればいいかわからない</li>
+      </ul>
+    </div>
+  </div>
 
-  <!-- ③ 解決策 -->
-  <div class="solution">
-    <div class="solution-wrap">
-      <h2>中庸道™️と出会って、こんなふうに変わりました</h2>
-      <div class="before-after">「仕方ない」<span class="arrow">→</span>「今の私でいい」に変わった</div>
-      <div class="before-after">「人の目が気になる」<span class="arrow">→</span>「自分軸で動ける」に変わった</div>
-      <div class="before-after">「ちゃんとしなければ」<span class="arrow">→</span>「これでいい」に変わった</div>
-      <div class="before-after">「何者でもない私」<span class="arrow">→</span>「今の私でいいんだ！」に変わった</div>
+  <!-- ③ 変化 -->
+  <div class="solution-section">
+    <div class="section-inner">
+      <p class="section-label">TRANSFORMATION</p>
+      <h2 class="section-title">中庸道™️と出会って、変わりました</h2>
+      <div class="change-cards">
+        <div class="change-card">
+          <span class="before">「仕方ない」</span>
+          <span class="arrow">→</span>
+          <span class="after">「今の私でいい」</span>
+        </div>
+        <div class="change-card">
+          <span class="before">「人の目が気になる」</span>
+          <span class="arrow">→</span>
+          <span class="after">「自分軸で動ける」</span>
+        </div>
+        <div class="change-card">
+          <span class="before">「ちゃんとしなければ」</span>
+          <span class="arrow">→</span>
+          <span class="after">「これでいい」</span>
+        </div>
+        <div class="change-card">
+          <span class="before">「何者でもない私」</span>
+          <span class="arrow">→</span>
+          <span class="after">「今の私でいいんだ！」</span>
+        </div>
+      </div>
       <p class="solution-message">
         無理に信じなくていい。<br>
         頭で納得してから、自然と変わっていける。<br>
@@ -301,55 +422,53 @@
   </div>
 
   <!-- ④ 自己紹介 -->
-  <section class="profile">
-    <h2>はじめまして</h2>
-    <div style="text-align:center; margin-bottom:28px;">
-      <img src="junko_illust.png" alt="じゅんこさんのイラスト" style="width:180px; border-radius:50%; border:4px solid #C4956A;">
-    </div>
-    <div class="profile-content">
-      <p>ちば順子です。<br>元中学校の理科教諭。33年間、白衣を着て<br>「なぜだろう→予想→実験→考察」を<br>子どもたちと繰り返してきました。</p>
-      <p>だから私は、何でもすぐには信じられない。<br>「根拠は？」「単位はヘルツ？（笑）」<br>引き寄せも、波動も、インナーチャイルドも<br>ずっと「本当かな」と思っていました。</p>
-      <p>でも今は、どれも「嘘だ」と言えない。<br>むしろ「そうかもね」と思っています。</p>
-      <p>私が変わったのは、無理に信じたからじゃない。<br>頭で納得できたから、自然と変わっていった。<br><br>その入口になったのが、中庸思考（中庸道™️）でした。</p>
-    </div>
-  </section>
-
-  <!-- ⑤ 受講生の変化 -->
-  <div class="testimonial">
-    <div class="testimonial-wrap">
-      <div style="text-align:center; margin-bottom:16px;">
-        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M30 5 C15 5 5 20 5 35 C5 50 15 55 30 55 C45 55 55 50 55 35 C55 20 45 5 30 5Z" fill="#6B8F6B" opacity="0.2"/>
-          <path d="M30 10 Q20 25 30 50 Q40 25 30 10Z" fill="#6B8F6B" opacity="0.6"/>
-          <path d="M30 10 Q15 30 30 50" stroke="#6B8F6B" stroke-width="1.5" fill="none"/>
-        </svg>
+  <div class="profile-section">
+    <div class="section-inner">
+      <p class="section-label">PROFILE</p>
+      <h2 class="section-title">はじめまして</h2>
+      <div class="profile-img-wrap">
+        <img src="junko_illust.png" alt="ちば順子イラスト">
       </div>
-      <h2>受講生さんの声</h2>
-      <div class="quote">
-        「自分を縛っていたものが、少しずつ消えていきました。<br>こんなに楽に生きていいんだ、という感覚がやってきました。」
-      </div>
-      <p class="quote-author">― 50代女性</p>
-      <div class="changes">
-        <ul>
-          <li>「仕方ない」と言わなくなった</li>
-          <li>家族との関係が楽になった</li>
-          <li>自分のやりたいことが見えてきた</li>
-          <li>毎日が少しずつ楽しくなってきた</li>
-        </ul>
+      <div class="profile-content">
+        <p>ちば順子です。<br>元中学校の理科教諭。33年間、白衣を着て<br>「なぜだろう→予想→実験→考察」を<br>子どもたちと繰り返してきました。</p>
+        <p>だから私は、何でもすぐには信じられない。<br>「根拠は？」「単位はヘルツ？（笑）」<br>引き寄せも、波動も、インナーチャイルドも<br>ずっと「本当かな」と思っていました。</p>
+        <p>でも今は、どれも「嘘だ」と言えない。<br>むしろ「そうかもね」と思っています。</p>
+        <p>私が変わったのは、無理に信じたからじゃない。<br>頭で納得できたから、自然と変わっていった。<br><br>その入口になったのが、中庸思考（中庸道™️）でした。</p>
       </div>
     </div>
   </div>
 
+  <!-- ⑤ 受講生の声 -->
+  <div class="testimonial-section">
+    <div class="section-inner">
+      <p class="section-label">VOICE</p>
+      <h2 class="section-title">受講生さんの声</h2>
+      <div class="quote-box">
+        「自分を縛っていたものが、少しずつ消えていきました。<br>こんなに楽に生きていいんだ、という感覚がやってきました。」
+      </div>
+      <p class="quote-author">― 50代女性</p>
+      <ul class="changes-list">
+        <li>「仕方ない」と言わなくなった</li>
+        <li>家族との関係が楽になった</li>
+        <li>自分のやりたいことが見えてきた</li>
+        <li>毎日が少しずつ楽しくなってきた</li>
+      </ul>
+    </div>
+  </div>
+
   <!-- ⑥ サービス案内 -->
-  <section class="service">
-    <h2>こんなサポートをしています</h2>
-    <ul>
-      <li>自分の価値観と向き合う個別セッション</li>
-      <li>中庸道™️を通じた人生再設計</li>
-      <li>少人数での継続サポート</li>
-    </ul>
-    <p style="text-align:center; font-size:0.95rem; color:#6B6B6B;">まずはLINEで気軽にお話しませんか？</p>
-  </section>
+  <div class="service-section">
+    <div class="section-inner">
+      <p class="section-label">SERVICE</p>
+      <h2 class="section-title">こんなサポートをしています</h2>
+      <ul class="service-list">
+        <li>自分の価値観と向き合う個別セッション</li>
+        <li>中庸道™️を通じた人生再設計</li>
+        <li>少人数での継続サポート</li>
+      </ul>
+      <p style="text-align:center; font-size:0.95rem; color:#6B6B6B;">まずはLINEで気軽にお話しませんか？</p>
+    </div>
+  </div>
 
   <!-- ⑦ LINE登録 -->
   <div class="line-cta">
