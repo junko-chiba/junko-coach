@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>モヤモヤ中庸ナビ</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background: linear-gradient(160deg, #faf7ff 0%, #fff8f8 50%, #f7faff 100%);
+            min-height: 100vh;
+        }
+        .glow-effect {
+            box-shadow: 0 0 28px rgba(180, 140, 200, 0.18);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9b7bb5, #c49bbf);
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 6px;
+            flex-shrink: 0;
+        }
+        .flower-deco {
+            position: absolute;
+            opacity: 0.18;
+            pointer-events: none;
+        }
+        textarea, input[type="text"] {
+            border: 1px solid #e0d0f0 !important;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        textarea:focus, input[type="text"]:focus {
+            outline: none !important;
+            border-color: #c4a8d4 !important;
+            box-shadow: 0 0 0 3px rgba(196,168,212,0.15) !important;
+        }
+        .chip-btn {
+            background: #faf5ff;
+            color: #9b7bb5;
+            border: 1px solid #e0d0f0;
+            transition: all 0.2s;
+        }
+        .chip-btn:hover {
+            background: #f0e8ff;
+        }
+        .chip-active {
+            background: linear-gradient(135deg, #9b7bb5, #c49bbf) !important;
+            color: white !important;
+            border-color: #9b7bb5 !important;
+        }
+        .label-text {
+            color: #7a5a95;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .label-note {
+            color: #b8a0c8;
+            font-size: 0.75rem;
+            font-weight: 400;
+            margin-left: 4px;
+        }
+        /* エラーメッセージ */
+        .error-msg {
+            display: none;
+            background: #fff0f8;
+            border: 1px solid #f0c8dc;
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: #9a5a7a;
+            text-align: center;
+            margin-top: 8px;
+        }
+        .error-msg.show {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+        /* コピーボタン */
+        .copy-btn {
+            background: #f5eeff;
+            color: #9b7bb5;
+            border: 1px solid #e0d0f0;
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Zen Maru Gothic', sans-serif;
+        }
+        .copy-btn:hover {
+            background: #ede0f8;
+        }
+        .copy-btn.copied {
+            background: #d4f0e8;
+            color: #5a9a7a;
+            border-color: #a8d4c0;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-700 antialiased py-8 px-4 flex flex-col justify-between">
+
+    <main class="max-w-md mx-auto w-full bg-white/75 backdrop-blur-md rounded-3xl p-6 shadow-md border border-purple-100/60 my-auto relative overflow-hidden">
+
+        <!-- 花の装飾（左上） -->
+        <svg class="flower-deco" style="top:-10px;left:-10px;width:100px;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="30" r="10" fill="#c4a8d4"/>
+            <circle cx="70" cy="50" r="10" fill="#e8b4c8"/>
+            <circle cx="50" cy="70" r="10" fill="#c4a8d4"/>
+            <circle cx="30" cy="50" r="10" fill="#e8b4c8"/>
+            <circle cx="50" cy="50" r="8" fill="#fff0f8"/>
+            <ellipse cx="62" cy="22" rx="6" ry="10" fill="#a8d4b8" transform="rotate(30 62 22)"/>
+            <ellipse cx="75" cy="35" rx="5" ry="9" fill="#a8d4b8" transform="rotate(60 75 35)"/>
+        </svg>
+
+        <!-- 花の装飾（右下） -->
+        <svg class="flower-deco" style="bottom:-10px;right:-10px;width:90px;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="30" r="9" fill="#e8b4c8"/>
+            <circle cx="68" cy="48" r="9" fill="#c4a8d4"/>
+            <circle cx="50" cy="66" r="9" fill="#e8b4c8"/>
+            <circle cx="32" cy="48" r="9" fill="#c4a8d4"/>
+            <circle cx="50" cy="48" r="7" fill="#fff0f8"/>
+            <ellipse cx="30" cy="72" rx="5" ry="9" fill="#a8d4b8" transform="rotate(-30 30 72)"/>
+            <ellipse cx="18" cy="60" rx="5" ry="9" fill="#a8d4b8" transform="rotate(-60 18 60)"/>
+        </svg>
+
+        <header class="text-center mb-8 relative">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-28 h-28 rounded-full blur-2xl opacity-40 pointer-events-none" style="background:radial-gradient(circle, #e8c4f0, #f8d4e8);"></div>
+            <div class="text-2xl mb-1">🌸</div>
+            <h1 class="text-xl font-bold tracking-wide mb-2 relative z-10" style="color:#7a5a95;">
+                モヤモヤ中庸ナビ
+            </h1>
+            <p class="text-xs" style="color:#a08aaa;">4つのステップで貴重な気づきを得て、心を整えましょう</p>
+        </header>
+
+        <div id="form-section" class="space-y-6">
+
+            <!-- ①事実 -->
+            <div class="space-y-2">
+                <label class="flex items-start">
+                    <span class="step-badge">1</span>
+                    <span class="label-text">何が起きましたか？<span class="label-note">（事実だけ・感情や解釈は入れずに）</span></span>
+                </label>
+                <textarea id="input-fact" placeholder="例：夫が洗い物をしないまま出かけた。"
+                    class="w-full h-20 p-3 text-sm bg-white rounded-2xl resize-none shadow-inner"></textarea>
+            </div>
+
+            <!-- ②認知 -->
+            <div class="space-y-2">
+                <label class="flex items-start">
+                    <span class="step-badge">2</span>
+                    <span class="label-text">そのとき、どう受け取り（思い込み）ましたか？<span class="label-note">（認知・解釈）</span></span>
+                </label>
+                <textarea id="input-perception" placeholder="例：私のことを軽く見ているんだ。家事は私の仕事だと思っているんだ。"
+                    class="w-full h-20 p-3 text-sm bg-white rounded-2xl resize-none shadow-inner"></textarea>
+            </div>
+
+            <!-- ③思考 -->
+            <div class="space-y-2">
+                <label class="flex items-start">
+                    <span class="step-badge">3</span>
+                    <span class="label-text">どんな思いが、出てきましたか？<span class="label-note">（思考・信念）</span></span>
+                </label>
+                <textarea id="input-thought" placeholder="例：いつも私ばかり。こんな生活がずっと続くんだ。"
+                    class="w-full h-20 p-3 text-sm bg-white rounded-2xl resize-none shadow-inner"></textarea>
+            </div>
+
+            <!-- ④感情 -->
+            <div class="space-y-2">
+                <label class="flex items-start">
+                    <span class="step-badge">4</span>
+                    <span class="label-text">どんな感情が湧きましたか？<span class="label-note">（複数選択可）</span></span>
+                </label>
+                <div class="flex flex-wrap gap-2" id="emotion-chips">
+                    <button type="button" onclick="toggleChip(this)" class="chip-btn px-4 py-2 text-xs font-medium rounded-full cursor-pointer">イライラ</button>
+                    <button type="button" onclick="toggleChip(this)" class="chip-btn px-4 py-2 text-xs font-medium rounded-full cursor-pointer">悲しい</button>
+                    <button type="button" onclick="toggleChip(this)" class="chip-btn px-4 py-2 text-xs font-medium rounded-full cursor-pointer">不安・焦り</button>
+                    <button type="button" onclick="toggleChip(this)" class="chip-btn px-4 py-2 text-xs font-medium rounded-full cursor-pointer">寂しい</button>
+                    <button type="button" onclick="toggleChip(this)" class="chip-btn px-4 py-2 text-xs font-medium rounded-full cursor-pointer">モヤモヤ</button>
+                    <button type="button" onclick="toggleChip(this)" class="chip-btn px-4 py-2 text-xs font-medium rounded-full cursor-pointer">置いてけぼり感</button>
+                    <button type="button" onclick="toggleChip(this)" class="chip-btn px-4 py-2 text-xs font-medium rounded-full cursor-pointer">悔しい</button>
+                </div>
+                <input type="text" id="input-emotion-free" placeholder="その他の感情があればここに"
+                    class="w-full p-2 mt-1 text-xs bg-white/50 rounded-xl">
+            </div>
+
+            <!-- エラーメッセージ -->
+            <div id="error-msg" class="error-msg">
+                🌸 ①何が起きたか と ③どんな思いが出てきたか を入力してみてね。<br>一緒に紐解いていきましょう。
+            </div>
+
+            <button onclick="transformEmotion()"
+                class="w-full text-white font-medium py-3.5 px-4 rounded-full shadow-md hover:opacity-95 transition-all cursor-pointer text-center text-sm tracking-wider active:scale-[0.98] mt-2"
+                style="background: linear-gradient(135deg, #9b7bb5, #c49bbf, #e8a4b8);">
+                🌸 心をフラットにする（中庸ナビ起動）
+            </button>
+        </div>
+
+        <div id="result-section" class="hidden space-y-6 animate-fade-in">
+            <div class="rounded-2xl p-5 shadow-sm space-y-5 glow-effect" style="background: linear-gradient(160deg, #fdf4ff 0%, #fff4f8 100%); border: 1px solid #e8c4f0;">
+
+                <!-- 共感 -->
+                <div class="space-y-1">
+                    <span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded-md" style="background:#ede0f8; color:#7a5a95;">🌸 ジュンちゃんより</span>
+                    <p id="output-sympathy" class="text-sm leading-relaxed text-gray-700 pt-1"></p>
+                </div>
+
+                <hr style="border-color:#e8c4f0; border-style:dashed;">
+
+                <!-- 問いかけ -->
+                <div class="space-y-1">
+                    <span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded-md" style="background:#fde8f0; color:#9a5a7a;">🌿 反対側の視点を探してみましょう（中庸）</span>
+                    <p id="output-neutral" class="text-sm leading-relaxed font-medium pt-1 whitespace-pre-line" style="color:#6a4a85;"></p>
+                </div>
+
+                <hr style="border-color:#e8c4f0; border-style:dashed;">
+
+                <!-- お守り -->
+                <div class="text-center py-3 rounded-xl" style="background:rgba(255,255,255,0.7); border:1px solid #f0d8f8;">
+                    <div class="text-lg mb-1">🌷</div>
+                    <p id="output-talisman" class="text-xs italic font-medium" style="color:#9b7bb5;"></p>
+                </div>
+            </div>
+
+            <!-- コピーボタン -->
+            <div class="text-center">
+                <button onclick="copyResult()" id="copy-btn" class="copy-btn">
+                    📋 この気づきをコピーする
+                </button>
+            </div>
+
+            <button onclick="resetForm()"
+                class="w-full font-medium py-2.5 px-4 rounded-full transition-all cursor-pointer text-center text-xs"
+                style="background:#f5eeff; color:#9b7bb5;">
+                🌸 もういちど整える
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="text-center text-[10px] mt-6" style="color:#c4a8d4;">
+        🌸 © ちば順子コーチング 🌸
+    </footer>
+
+    <script>
+        function toggleChip(button) {
+            button.classList.toggle('chip-active');
+        }
+
+        function getSelectedEmotions() {
+            const chips = document.querySelectorAll('#emotion-chips button.chip-active');
+            let emotions = Array.from(chips).map(c => c.innerText);
+            const freeText = document.getElementById('input-emotion-free').value.trim();
+            if (freeText) emotions.push(freeText);
+            return emotions.length > 0 ? emotions.join('や') : 'モヤモヤする';
+        }
+
+        function transformEmotion() {
+            const factText = document.getElementById('input-fact').value.trim();
+            const perceptionText = document.getElementById('input-perception').value.trim();
+            const thoughtText = document.getElementById('input-thought').value.trim();
+            const emotions = getSelectedEmotions();
+            const errorMsg = document.getElementById('error-msg');
+
+            if (!factText || !thoughtText) {
+                errorMsg.classList.add('show');
+                return;
+            }
+            errorMsg.classList.remove('show');
+
+            // 共感メッセージ
+            const sympathyTemplates = [
+                `そっか、そんなことがあったんですね。「${emotions}」という気持ちになるのは、あなたがそれだけ真剣に向き合っている証拠。まずはそう感じた自分に、優しく○（マル）を出してあげてくださいね。`,
+                `「${emotions}」と感じてしまうような出来事があったのですね。一生懸命だからこそ、心がザワついてしまうもの。そのモヤモヤを「そう思ったんだね」って、まるごと受け止めてあげましょう。`
+            ];
+            const sympathyOutput = sympathyTemplates[Math.floor(Math.random() * sympathyTemplates.length)];
+
+            // 問いかけ型の中庸メッセージ
+            let neutralOutput = "";
+            if (factText.includes('脱ぎっぱなし') || factText.includes('片付け') || factText.includes('掃除') || factText.includes('家事') || factText.includes('洗い物')) {
+                neutralOutput = `「${thoughtText}」という思いが出てきているんですね。\n\nここで少し、視点を変えてみましょう。\n\n✦ その出来事のおかげで、あなたが得ているものは何かありますか？\n✦ 相手のその行動が、あなたに気づかせてくれていることは？\n✦ 「私が本当に大切にしたいこと」は何でしょう？\n\nすぐに答えは出なくていいです。ただ、問いを心に置いておいてみてください。`;
+            } else if (factText.includes('聞いて') || factText.includes('無視') || factText.includes('会話') || factText.includes('言ったのに') || perceptionText.includes('軽く見')) {
+                neutralOutput = `「${thoughtText}」という思いが出てきているんですね。\n\nここで少し、視点を変えてみましょう。\n\n✦ 相手がそうすることで、あなたが守られているものはありますか？\n✦ この状況が、あなたに教えてくれていることは何でしょう？\n✦ もしこれが「愛のメッセージ」だとしたら、どんな意味があるかな？\n\n答えは、あなたの中にあります。ゆっくり探してみてください。`;
+            } else {
+                neutralOutput = `「${thoughtText}」という思いが出てきているんですね。\n\nここで少し、視点を変えてみましょう。\n\n✦ この出来事のおかげで、あなたが気づけたことは何かありますか？\n✦ 反対側から見たとき、相手がしてくれていることはある？\n✦ 「私が本当に望んでいること」は、実は何でしょう？\n\n感情が揺れることは、あなたの大切な価値観が揺れているサイン。その価値観に、光を当ててみましょう。`;
+            }
+
+            // お守りメッセージ
+            const talismanTemplates = [
+                "出来事はいつもニュートラル。あなたの心が軽くなる未来を選んでいこう。",
+                "湧き出る感情は宝物。まずはその感情をやさしく受け止めてね。",
+                "大丈夫。すべての摩擦は、あなたの輝く価値観に繋がるための愛のステップです。",
+                "今の私でいい。そのままのあなたが、すでに十分素晴らしい。",
+                "感情が揺れたとき、あなたの本当の願いが顔を出している。"
+            ];
+            const talismanOutput = talismanTemplates[Math.floor(Math.random() * talismanTemplates.length)];
+
+            document.getElementById('output-sympathy').innerText = sympathyOutput;
+            document.getElementById('output-neutral').innerText = neutralOutput;
+            document.getElementById('output-talisman').innerText = talismanOutput;
+
+            document.getElementById('form-section').classList.add('hidden');
+            document.getElementById('result-section').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function copyResult() {
+            const sympathy = document.getElementById('output-sympathy').innerText;
+            const neutral = document.getElementById('output-neutral').innerText;
+            const talisman = document.getElementById('output-talisman').innerText;
+            const text = `🌸 ジュンちゃんより\n${sympathy}\n\n🌿 反対側の視点\n${neutral}\n\n🌷 ${talisman}`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.textContent = '✅ コピーしました！';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = '📋 この気づきをコピーする';
+                    btn.classList.remove('copied');
+                }, 2500);
+            });
+        }
+
+        function resetForm() {
+            document.getElementById('input-fact').value = "";
+            document.getElementById('input-perception').value = "";
+            document.getElementById('input-thought').value = "";
+            document.getElementById('input-emotion-free').value = "";
+            document.getElementById('error-msg').classList.remove('show');
+
+            const activeChips = document.querySelectorAll('#emotion-chips button.chip-active');
+            activeChips.forEach(chip => chip.classList.remove('chip-active'));
+
+            document.getElementById('result-section').classList.add('hidden');
+            document.getElementById('form-section').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
